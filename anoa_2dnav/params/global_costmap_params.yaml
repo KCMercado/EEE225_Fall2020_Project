@@ -1,5 +1,5 @@
 global_costmap:
-  global_frame: /map
+  global_frame: map
   #  defines what coordinate frame the costmap should run in
   
   robot_base_frame: base_link
@@ -10,3 +10,5 @@ global_costmap:
   
   static_map: true
   # determines whether or not the costmap should initialize itself based on a map served by the map_server
+  
+  transform_tolerance: 0.5
