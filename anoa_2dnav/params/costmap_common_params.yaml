@@ -19,3 +19,4 @@ laser_scan_sensor: {sensor_frame: laser_frame, data_type: LaserScan, topic: scan
 # RPLidar publishes /scan topice with frame name: laser_frame
 # laser_frame is a tf frame that contains the Lidar
 # "Marking" and "clearing" parameters determine whether the sensor will be used to add obstacle information to the costmap, clear obstacle information from the costmap, or do both.
+
