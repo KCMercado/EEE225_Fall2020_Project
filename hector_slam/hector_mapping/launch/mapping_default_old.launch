@@ -11,7 +11,6 @@
   <arg name="odom_frame" default="base_link"/>
   
   <arg name="pub_map_scanmatch_transform" default="true"/>
-  
   <arg name="pub_map_odom_transform" default="true"/>
   <arg name="scan_subscriber_queue_size" default="5"/>
   <arg name="scan_topic" default="scan"/>
