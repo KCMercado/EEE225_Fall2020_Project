@@ -10,6 +10,7 @@
   <!-- This car robot does not have an odometry. So we set it to the base link -->
   <arg name="odom_frame" default="base_link"/>
   
+  <arg name="pub_map_scanmatch_transform" default="true"/>
   <arg name="pub_map_odom_transform" default="true"/>
   <arg name="scan_subscriber_queue_size" default="5"/>
   <arg name="scan_topic" default="scan"/>
@@ -59,9 +60,10 @@
 	
     
 	<!--<node pkg="tf" type="static_transform_publisher" name="map_nav_broadcaster" args="0 0 0 0 0 0 map nav 100"/> MODIFIED BY KM-->
+	
 	<!-- arguments below are x y z qx qy qz,which are the x/y/z offset and yaw/pitch/roll (quaternion) from base link to laser.
   	Values below were measured from robot car. The "100" is the period, in miliseconds, to send the transform info-->
-  <node pkg="tf" type="static_transform_publisher" name="base_frame_2_laser_link" args="0.08 0 0.08 0 0 0 base_link laser 100" />
+  <node pkg="tf" type="static_transform_publisher" name="base_frame_2_laser_link" args="0.20 0 0.20 0 0 0 base_link laser 100" />
   
 </launch>
   
