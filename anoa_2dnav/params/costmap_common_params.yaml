@@ -6,9 +6,9 @@ obstacle_range: 0.5
 raytrace_range: 3.0
 # the robot will attempt to clear our space in front of it up to 3 meters
 
-footprint: [[0.16, 0.16], [-0.16, 0.16], [-0.16,-0.16], [0.16, -0.16]]
+#footprint: [[0.16, 0.16], [-0.16, 0.16], [-0.16,-0.16], [0.16, -0.16]]
 
-#robot_radius: 0.16
+robot_radius: 0.16
 
 inflation_radius: 0.55
 # the robot will treat all paths that stay 0.55 meters or more away from obstacles as having equal obstacle cost
@@ -19,4 +19,3 @@ laser_scan_sensor: {sensor_frame: laser_frame, data_type: LaserScan, topic: scan
 # RPLidar publishes /scan topice with frame name: laser_frame
 # laser_frame is a tf frame that contains the Lidar
 # "Marking" and "clearing" parameters determine whether the sensor will be used to add obstacle information to the costmap, clear obstacle information from the costmap, or do both.
-
