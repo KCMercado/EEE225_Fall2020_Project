@@ -63,12 +63,11 @@ class Driver:
     		# Initialize the ROS node
         rospy.init_node('driver')
 
+        # Identify parameters
         self._last_received = rospy.get_time()
         self._timeout = rospy.get_param('~timeout', 1)
         self._rate = rospy.get_param('~rate', 10)
-        self._max_speed = rospy.get_param('~max_speed', 1.0)
-        self._wheel_base = rospy.get_param('~wheel_base', 0.75) # measured the long dimension of robot to get the biggest turn circle
-
+        
         # Create 4 instantces of the Motor class
         # assign pins to motors.
         self._MotorA = Motor(12, 16) # Front left wheel
@@ -97,17 +96,17 @@ class Driver:
         angular_z = message.angular.z
 
         # Calculate wheel speeds in m/s
-        MotorA_speed = linear_x - linear_y - angular_z*self._wheel_base/2
-        MotorB_speed = linear_x + linear_y + angular_z*self._wheel_base/2
-        MotorC_speed = linear_x + linear_y - angular_z*self._wheel_base/2
-        MotorD_speed = linear_x - linear_y + angular_z*self._wheel_base/2
+        MotorA_speed = linear_x - linear_y - angular_z
+        MotorB_speed = linear_x + linear_y + angular_z
+        MotorC_speed = linear_x + linear_y - angular_z
+        MotorD_speed = linear_x - linear_y + angular_z
 
         # Convert m/s into percent of maximum wheel speed
         # this gives us a duty cycle that we can apply to each motor.
-        self._MotorA_speed_percent = (100 * MotorA_speed/self._max_speed)
-        self._MotorB_speed_percent = (100 * MotorB_speed/self._max_speed)
-        self._MotorC_speed_percent = (100 * MotorC_speed/self._max_speed)
-        self._MotorD_speed_percent = (100 * MotorD_speed/self._max_speed)
+        self._MotorA_speed_percent = (100 * MotorA_speed)
+        self._MotorB_speed_percent = (100 * MotorB_speed)
+        self._MotorC_speed_percent = (100 * MotorC_speed)
+        self._MotorD_speed_percent = (100 * MotorD_speed)
         
     # Create a function called "run"
     # this is control loop of the driver
