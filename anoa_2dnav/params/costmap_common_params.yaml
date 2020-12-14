@@ -1,21 +1,30 @@
-# determines the max sensor range reading that will result in an obstacle being put into the costmap
-obstacle_range: 0.5 
-# robot will only update its map w/ info about obstacles that are 0.5 meters away from base
+footprint: [[0.08, 0.08], [-0.22, 0.08], [-0.22, -0.08], [0.08, -0.08]]
+#robot_radius: 0.16
+#Can either choose to use footprint or robot radius for your specific robot
 
-# deteremines the range to which we will rayrace freespace given a sensor reading
-raytrace_range: 3.0
-# the robot will attempt to clear our space in front of it up to 3 meters
+obstacle_range: 3.5
+#Determines the max sensor range reading that will result in an obstacle being put into the costmap
+#Robot will only update its map w/ info about obstacles that are 3.5 meters away from base
+raytrace_range: 0.05
+#Deteremines the range to which we will raytrace freespace given a sensor reading
+#The robot will attempt to clear our space in front of it up to 0.05 meters
+  
+transform_tolerance: 0.5
 
-#footprint: [[0.16, 0.16], [-0.16, 0.16], [-0.16,-0.16], [0.16, -0.16]]
+min_obstacle_height: 0.0
+max_obstacle_height: 0.5
 
-robot_radius: 0.16
+obstacles_layer:
+  enabled: true
+  observation_sources: laser_scan
+  laser_scan: {data_type: LaserScan, topic: scan, marking: true, clearing: true, inf_is_valid: true}
+  #RPLidar publishes /scan topic with frame name: laser_frame
+  #Laser_frame is a tf frame that contains the Lidar
+  #"marking" and "clearing" parameters determine whether the sensor will be used to add obstacle information to the costmap, clear obstacle information from the costmap, or do both.
 
-inflation_radius: 0.55
-# the robot will treat all paths that stay 0.55 meters or more away from obstacles as having equal obstacle cost
-
-observation_sources: laser_scan_sensor 
-
-laser_scan_sensor: {sensor_frame: laser_frame, data_type: LaserScan, topic: scan, marking: true, clearing: true}
-# RPLidar publishes /scan topice with frame name: laser_frame
-# laser_frame is a tf frame that contains the Lidar
-# "Marking" and "clearing" parameters determine whether the sensor will be used to add obstacle information to the costmap, clear obstacle information from the costmap, or do both.
+inflater_layer:
+  enabled: true
+  cost_scaling_factor: 50.0
+  inflation_radius: 0.0
+  #The robot will treat all paths that stay 0.30 meters or more away from obstacles as having equal obstacle cost
+  

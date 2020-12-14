@@ -1,20 +1,29 @@
 local_costmap:
-  global_frame: map
-  robot_base_frame: base_link
+
+  global_frame: "map"
+  #defines what coordinate frame the costmap should run in
   
-  update_frequency: 5.0
+  robot_base_frame: "base_link"
+  #defines what coordinate frame the robot base should run in
   
+  update_frequency: 10.0
+  # determines the frequency, in Hz, at which the costmap will run its update loop
+  
+  publish_frequency: 4.0
   # determines the rate, in Hz, at which the costmap will publish visualization information
-  publish_frequency: 2.0
    
   static_map: false
+  # determines whether or not the costmap should initialize itself based on a map served by the map_server
   
   rolling_window: true
-  # 'true' means that the costmap will remain centered around the robot as the robot moves through the world
+  # 'true' means that the costmap will remain centered around the robot as the robot moves
   
-  width: 6.0
-  height: 6.0
-  resolution: 0.05
+  width: 5.0
+  height: 5.0
+  resolution: 0.02
   # "width," "height," and "resolution" parameters set the width (meters), height (meters), and resolution (meters/cell) of the costmap
   
-  transform_tolerance: 0.5
+  plugins:
+  - {name: obstacles_layer, type: "costmap_2d::ObstacleLayer"}
+  - {name: inflater_layer, type: "costmap_2d::InflationLayer"}
+    
