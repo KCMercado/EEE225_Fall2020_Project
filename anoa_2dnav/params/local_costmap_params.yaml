@@ -9,7 +9,7 @@ local_costmap:
   update_frequency: 10.0
   # determines the frequency, in Hz, at which the costmap will run its update loop
   
-  publish_frequency: 4.0
+  publish_frequency: 2.0
   # determines the rate, in Hz, at which the costmap will publish visualization information
    
   static_map: false
@@ -24,6 +24,6 @@ local_costmap:
   # "width," "height," and "resolution" parameters set the width (meters), height (meters), and resolution (meters/cell) of the costmap
   
   plugins:
-  - {name: obstacles_layer, type: "costmap_2d::ObstacleLayer"}
-  - {name: inflater_layer, type: "costmap_2d::InflationLayer"}
+    - {name: obstacles_layer, type: "costmap_2d::ObstacleLayer"}
+    - {name: inflater_layer, type: "costmap_2d::InflationLayer"}
     

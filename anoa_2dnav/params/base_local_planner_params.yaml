@@ -2,13 +2,12 @@ TrajectoryPlannerROS:
   
   # Velocity limits of robot
   max_vel_x: 0.35
-  min_vel_x: -0.30
-  max_vel_y: 0.35
-  min_vel_y: -0.30
-  
-  max_vel_theta: 0.25
-  min_vel_theta: -0.25
-  min_in_place_vel_theta: 0.25
+  min_vel_x: 0.30
+  #y_vels: '-0.35, -0.30, 0.35, 0.30' (Use when holonomic_robot is true)
+  max_vel_theta: 0.22
+  min_vel_theta: -0.22
+  min_in_place_vel_theta: 0.22
+  escape_vel: -0.30
 
   # Acceleration limits of robot
   acc_lim_theta: 0.5
@@ -16,13 +15,18 @@ TrajectoryPlannerROS:
   acc_lim_y: 0.5
   
   # Establish if robot is holonomic or not
-  holonomic_robot: true
+  holonomic_robot: false
   
   # Establish goal tolerances
-  xy_goal_tolerance: 0.10
-  yaw_goal_tolerance: 0.10
+  xy_goal_tolerance: 0.15
+  yaw_goal_tolerance: 0.15
   latch_xy_goal_tolerance: false
   
   # Trajectory scoring parameters
   meter_scoring: true
+  
+  path_distance_bias: 0.10
+  # Weight for how much the controller should stay close to the path it was given
+  
+  heading_lookahead: 0.5
 

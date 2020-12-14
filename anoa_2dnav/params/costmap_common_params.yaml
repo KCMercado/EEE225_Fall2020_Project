@@ -5,11 +5,11 @@ footprint: [[0.08, 0.08], [-0.22, 0.08], [-0.22, -0.08], [0.08, -0.08]]
 obstacle_range: 3.5
 #Determines the max sensor range reading that will result in an obstacle being put into the costmap
 #Robot will only update its map w/ info about obstacles that are 3.5 meters away from base
-raytrace_range: 0.05
+raytrace_range: 0.15
 #Deteremines the range to which we will raytrace freespace given a sensor reading
-#The robot will attempt to clear our space in front of it up to 0.05 meters
+#The robot will attempt to clear our space in front of it up to 0.15 meters
   
-transform_tolerance: 0.5
+transform_tolerance: 0.7
 
 min_obstacle_height: 0.0
 max_obstacle_height: 0.5
@@ -21,10 +21,10 @@ obstacles_layer:
   #RPLidar publishes /scan topic with frame name: laser_frame
   #Laser_frame is a tf frame that contains the Lidar
   #"marking" and "clearing" parameters determine whether the sensor will be used to add obstacle information to the costmap, clear obstacle information from the costmap, or do both.
-
+  
 inflater_layer:
   enabled: true
-  cost_scaling_factor: 50.0
-  inflation_radius: 0.0
+  cost_scaling_factor: 10.0
+  inflation_radius: 0.05
   #The robot will treat all paths that stay 0.30 meters or more away from obstacles as having equal obstacle cost
   
